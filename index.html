@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#13201B">
+<title>Kedai Me R95 WiFi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: one phone column. The password is the hero; the review ask follows; everything else stays quiet. */
+:root{
+  --ground:#F2F5F3; --surface:#FFFFFF; --ink:#13201B; --muted:#56675F; --line:#D9E2DD;
+  --accent:#1E6B57; --accent-ink:#FFFFFF;
+  --hero:#13201B; --hero-ink:#F2F5F3; --hero-muted:#A3B6AD;
+  --btn:#8BE3C4; --btn-ink:#0F1E19;
+  --sans:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#0E1512; --surface:#16201C; --ink:#E6EEEA; --muted:#94A79E; --line:#26332E;
+    --accent:#5CC9A6; --accent-ink:#0B1411;
+    --hero:#1B2823; --hero-ink:#F2F5F3; --hero-muted:#93A99F;
+    --btn:#8BE3C4; --btn-ink:#0F1E19; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0E1512; --surface:#16201C; --ink:#E6EEEA; --muted:#94A79E; --line:#26332E;
+  --accent:#5CC9A6; --accent-ink:#0B1411;
+  --hero:#1B2823; --hero-ink:#F2F5F3; --hero-muted:#93A99F;
+  --btn:#8BE3C4; --btn-ink:#0F1E19; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:440px;margin:0 auto;padding-block:20px 36px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:18px}
+
+.outlet{display:flex;align-items:center;gap:12px}
+.mark{flex:none;width:46px;height:46px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-weight:800;font-size:1rem;letter-spacing:.02em}
+.outlet h1{margin:0;font-size:1.25rem;line-height:1.2;font-weight:800;text-wrap:balance}
+.outlet p{margin:2px 0 0;color:var(--muted);font-size:.9rem}
+
+.wifi{background:var(--hero);color:var(--hero-ink);border-radius:22px;padding:22px 20px 20px;display:flex;flex-direction:column;gap:16px}
+.field{display:flex;flex-direction:column;gap:2px;min-width:0}
+.label{font-size:.82rem;font-weight:500;color:var(--hero-muted)}
+.ssid{font-size:1.05rem;font-weight:600;overflow-wrap:anywhere}
+.pw{font-family:var(--mono);font-weight:600;font-size:clamp(1.7rem,8.5vw,2.2rem);line-height:1.15;letter-spacing:.06em;overflow-wrap:anywhere;user-select:all;-webkit-user-select:all}
+.copy{appearance:none;border:0;width:100%;min-height:54px;border-radius:14px;background:var(--btn);color:var(--btn-ink);font:700 1.02rem/1 var(--sans);display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;transition:transform .12s ease}
+.copy:active{transform:scale(.98)}
+.copy svg{width:20px;height:20px;flex:none}
+.copy:focus-visible,.review-btn:focus-visible,.ig:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.hint{margin:0;font-size:.82rem;color:var(--hero-muted);min-height:1.2em}
+.steps{margin:0;padding-left:1.2em;color:var(--hero-muted);font-size:.88rem;display:flex;flex-direction:column;gap:4px}
+.steps b{color:var(--hero-ink);font-weight:600}
+
+.review{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:12px}
+.review h2{margin:0;font-size:1.12rem;font-weight:700;text-wrap:balance}
+.review p{margin:0;color:var(--muted);font-size:.93rem}
+.review-btn{display:flex;align-items:center;justify-content:center;gap:8px;min-height:52px;border-radius:14px;background:var(--accent);color:var(--accent-ink);font-weight:700;text-decoration:none}
+.review-btn svg{width:18px;height:18px;flex:none}
+.small{font-size:.82rem;color:var(--muted)}
+
+.ig{display:flex;align-items:center;gap:10px;padding:14px 4px;color:var(--ink);text-decoration:none;font-weight:600;font-size:.95rem;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.ig svg{width:20px;height:20px;flex:none;color:var(--accent)}
+.ig span{flex:1;min-width:0;overflow-wrap:anywhere}
+
+footer{display:flex;flex-direction:column;gap:4px;font-size:.8rem;color:var(--muted)}
+footer strong{color:var(--ink);font-weight:600}
+@media (prefers-reduced-motion:reduce){.copy{transition:none}}
+</style>
+<style>body{margin:0}</style>
+</head>
+<body>
+<main class="wrap">
+  <header class="outlet">
+    <div class="mark" id="mark" aria-hidden="true">KM</div>
+    <div>
+      <h1 id="name">Kedai Me R95</h1>
+      <p id="area">WiFi gratis untuk tamu</p>
+    </div>
+  </header>
+
+  <section class="wifi" aria-labelledby="wifi-title">
+    <h2 id="wifi-title" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Detail WiFi</h2>
+    <div class="field">
+      <span class="label">Nama WiFi</span>
+      <span class="ssid" id="ssid">KedaiMeR95_Tamu</span>
+    </div>
+    <div class="field">
+      <span class="label">Password</span>
+      <span class="pw" id="pw">kedaime95</span>
+    </div>
+    <button class="copy" id="copy" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+      <span id="copy-text">Salin password</span>
+    </button>
+    <p class="hint" id="hint" aria-live="polite"></p>
+    <ol class="steps">
+      <li>Buka <b>Pengaturan</b>, lalu <b>WiFi</b>.</li>
+      <li>Pilih <b id="ssid2">KedaiMeR95_Tamu</b>.</li>
+      <li>Tempel password, lalu sambungkan.</li>
+    </ol>
+  </section>
+
+  <section class="review" aria-labelledby="review-title">
+    <h2 id="review-title">Senang di sini?</h2>
+    <p id="review-copy">Ulasan Anda membantu Kedai Me R95 ditemukan pengunjung lain.</p>
+    <a class="review-btn" id="review" href="#" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
+      Tulis ulasan di Google
+    </a>
+    <span class="small">Sekitar 30 detik.</span>
+  </section>
+
+  <a class="ig" id="ig" href="#" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+    <span id="ig-text">Ikuti kami di Instagram</span>
+  </a>
+
+  <footer>
+    <span id="updated">Password diperbarui otomatis oleh pemilik outlet.</span>
+    <span>Didukung <strong>NFC WiFi Connect</strong></span>
+  </footer>
+</main>
+
+<script>
+/* ===== Ubah data outlet di sini ===== */
+const OUTLET = {
+  name: "Kedai Me R95",
+  area: "",               // opsional, mis. "Bandung"
+  ssid: "KedaiMeR95_Tamu", // ganti dengan nama WiFi asli
+  password: "kedaime95",   // ganti dengan password asli
+  placeId: "",            // Place ID Google: tombol langsung membuka formulir ulasan
+  reviewUrl: "",          // atau tempel link ulasan (mis. https://g.page/r/...)
+  instagram: "",          // isi username tanpa @ untuk menampilkan
+  updated: "21 November 2026"
+};
+/* ==================================== */
+
+const $ = id => document.getElementById(id);
+const initials = OUTLET.name.split(/\s+/).filter(Boolean).slice(0,2).map(w => w[0].toUpperCase()).join("");
+$("mark").textContent = initials;
+$("name").textContent = OUTLET.name;
+$("area").textContent = "WiFi gratis untuk tamu" + (OUTLET.area ? " · " + OUTLET.area : "");
+$("ssid").textContent = OUTLET.ssid;
+$("ssid2").textContent = OUTLET.ssid;
+$("pw").textContent = OUTLET.password;
+$("review-copy").textContent = "Ulasan Anda membantu " + OUTLET.name + " ditemukan pengunjung lain.";
+$("review").href = OUTLET.reviewUrl ||
+  (OUTLET.placeId ? "https://search.google.com/local/writereview?placeid=" + encodeURIComponent(OUTLET.placeId)
+  : "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent((OUTLET.name + " " + OUTLET.area).trim()));
+if (OUTLET.instagram) {
+  $("ig").href = "https://instagram.com/" + OUTLET.instagram;
+  $("ig-text").textContent = "Ikuti @" + OUTLET.instagram + " di Instagram";
+} else { $("ig").hidden = true; }
+$("updated").textContent = "Password diperbarui " + OUTLET.updated + ".";
+document.title = OUTLET.name + " WiFi";
+
+function selectPassword(){
+  const r = document.createRange(); r.selectNodeContents($("pw"));
+  const s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+}
+function done(ok){
+  $("copy-text").textContent = ok ? "Password tersalin" : "Salin password";
+  $("hint").textContent = ok
+    ? "Sekarang buka Pengaturan WiFi dan tempel password."
+    : "Password sudah ditandai. Tekan lama, lalu pilih Salin.";
+  if (ok) setTimeout(() => { $("copy-text").textContent = "Salin password"; }, 4000);
+}
+$("copy").addEventListener("click", () => {
+  const text = OUTLET.password;
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(() => done(true)).catch(() => {
+      selectPassword();
+      let ok = false; try { ok = document.execCommand("copy"); } catch(e) {}
+      done(ok);
+    });
+  } else {
+    selectPassword();
+    let ok = false; try { ok = document.execCommand("copy"); } catch(e) {}
+    done(ok);
+  }
+});
+</script>
+
+</body>
+</html>
